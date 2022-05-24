@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: 'ms-ziggie-product-dev'
+    image: postgres:latest
+    restart: always
+    networks:
+      - backend
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=ziggie
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
+
+networks:
+  backend:
+    name: ms-ziggie-product
